@@ -7,10 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Interfaces\Repositories\" />
     <Folder Include="Application\Services\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Infrastructure\Persistence\Repositories\" />
   </ItemGroup>
 
   <ItemGroup>

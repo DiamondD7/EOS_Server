@@ -49,7 +49,7 @@ namespace UserAPI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("DailyEntryTable");
+                    b.ToTable("DailyEntryTable", (string)null);
                 });
 
             modelBuilder.Entity("UserAPI.Domain.Models.User", b =>
@@ -71,7 +71,7 @@ namespace UserAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserTable");
+                    b.ToTable("UserTable", (string)null);
                 });
 
             modelBuilder.Entity("UserAPI.Domain.Models.DailyEntry", b =>

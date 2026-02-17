@@ -10,7 +10,7 @@ namespace UserAPI.Domain.Models
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? Email { get; set; }
-        public ICollection<DailyEntry>? DailyEntry { get; set; }
+        public ICollection<DailyEntry>? DailyEntry { get; set; } = new List<DailyEntry>();
     }
 
     public class DailyEntry

@@ -4,7 +4,8 @@ namespace UserAPI.Application.Interfaces.Repositories
 {
     public interface IUserRepository
     {
-        Task<bool> CreateUser(User user);
-        Task<bool> LoggedData(DailyEntry dailyEntry);
+        Task<int>CheckUserIdentityAsync(User user);
+        Task<bool> CreateUserAsync(User user);
+        Task<bool> LoggedDataAsync(DailyEntryDTO dailyEntryModel);
     }
 }

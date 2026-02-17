@@ -13,8 +13,19 @@ namespace UserAPI.Infrastructure.Persistence.Repositories
             _context = context;
         }
 
-        
-        public async Task<bool> CreateUser(User user)
+        public async Task<int> CheckUserIdentityAsync(User user)
+        {
+            var existingUser = await _context.UserTable.FirstOrDefaultAsync(x => x.Email == user.Email);
+            if(existingUser != null)
+            {
+                return existingUser.Id;
+            }
+            return 0;
+        }
+
+
+
+        public async Task<bool> CreateUserAsync(User user)
         {
             if(user == null)
             {
@@ -26,9 +37,9 @@ namespace UserAPI.Infrastructure.Persistence.Repositories
             return true;
         }
 
-        public async Task<bool> LoggedData(DailyEntry dailyEntry)
+        public async Task<bool> LoggedDataAsync(DailyEntryDTO dailyEntryModel)
         {
-            var existingUser = await _context.UserTable.Include(x => x.DailyEntry).FirstOrDefaultAsync(x => x.Id == dailyEntry.UserId);
+            var existingUser = await _context.UserTable.Include(x => x.DailyEntry).FirstOrDefaultAsync(x => x.Id == dailyEntryModel.UserId);
 
             if(existingUser == null)
             {
@@ -37,15 +48,19 @@ namespace UserAPI.Infrastructure.Persistence.Repositories
 
             existingUser.DailyEntry.Add(new DailyEntry
             {
-                UserId = dailyEntry.UserId,
-                EnergyLevel = dailyEntry.EnergyLevel,
-                SleepHours = dailyEntry.SleepHours,
-                JournalText = dailyEntry.JournalText,
-                CreatedAt = DateTime.Now
+                UserId = dailyEntryModel.UserId,
+                EnergyLevel = dailyEntryModel.EnergyLevel,
+                SleepHours = dailyEntryModel.SleepHours,
+                JournalText = dailyEntryModel.JournalText,
+                CreatedAt = DateTime.UtcNow
             });
+
+
 
             await _context.SaveChangesAsync();
             return true;
         }
+
+
     }
 }
