@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using UserAPI.Application.Interfaces.Repositories;
 using UserAPI.Infrastructure.Persistence;
+using UserAPI.Infrastructure.Persistence.Repositories;
 
 namespace UserAPI
 {
@@ -25,6 +27,7 @@ namespace UserAPI
 
             builder.Services.AddControllers();
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
 
             var app = builder.Build();
 
