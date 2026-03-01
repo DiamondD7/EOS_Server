@@ -18,7 +18,7 @@ namespace UserAPI
                 options.AddPolicy("AllowSpecificOrigin",
                     policy =>
                     {
-                        policy.WithOrigins("http://localhost:5173") // Allow your frontend's URL
+                        policy.WithOrigins("https://phase0.net") // Allow your frontend's URL
                               .AllowCredentials()  // Allow credentials (cookies, authorization headers)
                               .AllowAnyHeader()    // Allow any headers
                               .AllowAnyMethod();   // Allow any HTTP method
