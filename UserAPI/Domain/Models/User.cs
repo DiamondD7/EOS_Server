@@ -21,7 +21,9 @@ namespace UserAPI.Domain.Models
         public int UserId { get; set; }
         public User User { get; set; } = null!;
         public int EnergyLevel { get; set; } //range 1-10. 10 being the most energetic.
-        public int SleepHours { get; set; }
+        public int OutputWork { get; set; }
+        public int MoodLevel { get; set; }
+        public double SleepHours { get; set; }
         public string? JournalText { get; set; }
         public DateTime CreatedAt { get; set; }
     }

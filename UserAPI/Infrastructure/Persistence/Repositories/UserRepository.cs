@@ -49,6 +49,8 @@ namespace UserAPI.Infrastructure.Persistence.Repositories
             existingUser.DailyEntry.Add(new DailyEntry
             {
                 UserId = dailyEntryModel.UserId,
+                MoodLevel = dailyEntryModel.MoodLevel,
+                OutputWork = dailyEntryModel.OutputWork,
                 EnergyLevel = dailyEntryModel.EnergyLevel,
                 SleepHours = dailyEntryModel.SleepHours,
                 JournalText = dailyEntryModel.JournalText,
