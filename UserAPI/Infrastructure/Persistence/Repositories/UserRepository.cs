@@ -54,6 +54,7 @@ namespace UserAPI.Infrastructure.Persistence.Repositories
                 EnergyLevel = dailyEntryModel.EnergyLevel,
                 SleepHours = dailyEntryModel.SleepHours,
                 JournalText = dailyEntryModel.JournalText,
+                ColorDayNumber = dailyEntryModel.ColorDayNumber,
                 CreatedAt = DateTime.UtcNow
             });
 
